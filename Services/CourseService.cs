@@ -4,9 +4,15 @@ namespace ElevateProjectFinal.Services
 {
     public class CourseService : ICourseService
     {
+        private DatabaseContext databaseContext;
+        public CourseService(DatabaseContext databaseContext)
+        {
+            this.databaseContext = databaseContext;
+        }
         public void Create(Course course)
         {
-            throw new NotImplementedException();
+            databaseContext.Course.Add(course);
+            databaseContext.SaveChanges();
         }
 
         public void Delete(int id)

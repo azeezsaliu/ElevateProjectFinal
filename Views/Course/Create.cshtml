@@ -17,33 +17,44 @@
                                     <p class="mb-4">We're open for any suggestion or just to have a chat</p>
                                     
                                     <form asp-action="Create" asp-controller="Course" enctype="multipart/form-data" id="contactForm" class="contactForm">
+                                        <div asp-validation-summary="All"></div>
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" name="name" id="name" placeholder="Title">
+                                                    <input type="text" class="form-control" name="Title" id="name" placeholder="Title">
                                                 </div>
                                             </div>
                                             <div class="col-lg-12">
                                                 <div class="form-group">
-                                                    <input type="email" class="form-control" name="email" id="email" placeholder="Category">
+                                                    <input type="text" class="form-control" name="Category" id="email" placeholder="Category">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                 <select class="form-control" name="UserId">
-                                                        <option>Select Instructor</option>
+                                                        <option value="1">Select Instructor</option>
                                                     </select>
                                                 </div>
                                             </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="ImageUrl" id="email" placeholder="ImageUrl">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="EnrollmentCount" id="email" placeholder="EnrollmentCount">
+                                            </div>
+                                        </div>
                                             
                                             <div class="col-md-12">
                                                 <div class="form-group">
-<textarea name="message" class="form-control" id="message" cols="30" rows="4" placeholder="Description"></textarea>
+                                                <textarea name="Description" class="form-control" id="message" cols="30" rows="4" placeholder="Description"></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <input type="file" class="form-control" name="file" id="file" placeholder="Image">
+                                                <input type="file" class="form-control" name="ImageFile" id="ImageFile" placeholder="Image">
                                                 </div>
                                             </div>
                                             <div class="col-md-12">

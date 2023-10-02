@@ -11,9 +11,10 @@
         public int UserId { get; set; }
         public string EnrollmentCount { get; set; }
 
-
-        public ICollection<Assignment> Assignments { get; set; }
-        public ICollection<Enrollment> Enrollments { get; set; }
+        /*
+        public ICollection<Assignment> Assignments { get;}
+        public ICollection<Enrollment> Enrollments { get;}
+        */
 
     }
 }

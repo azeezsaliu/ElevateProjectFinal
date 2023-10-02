@@ -1,6 +1,8 @@
 using ElevateProjectFinal.Models;
 using ElevateProjectFinal.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,21 @@ builder.Services.AddDbContext<DatabaseContext>(opts =>
     opts.UseSqlServer(builder.Configuration["ConnectionStrings:CalcConnection"]);
 });
 
+builder.Services.AddDbContext<IdentityContext>(opts =>
+opts.UseSqlServer(builder.Configuration[
+"ConnectionStrings:CalcConnection"]));
+
+builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<IdentityContext>();
+
+builder.Services.Configure<IdentityOptions>(opts => {
+    opts.Password.RequiredLength = 6;
+    opts.Password.RequireNonAlphanumeric = false;
+    opts.Password.RequireLowercase = false;
+    opts.Password.RequireUppercase = false;
+    opts.Password.RequireDigit = false;
+    opts.User.RequireUniqueEmail = true;
+    opts.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyz";
+});
 
 var app = builder.Build();
 
@@ -27,6 +44,8 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+IdentitySeedData.CreateAdminAccount(app.Services, app.Configuration);
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
