@@ -1,0 +1,4 @@
+﻿.search-background {
+    /* Ensure that the relative URL used is from your CSS file to the target image! */
+    background-image: url('~/images/image_1.jpg');
+}
